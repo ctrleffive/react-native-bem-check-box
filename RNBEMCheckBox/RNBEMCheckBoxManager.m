@@ -46,7 +46,12 @@ RCT_EXPORT_MODULE();
         @"value": @(sender.on),
         @"name": @"tap",
     };
-    [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+//    [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+
+    RCTComponentEvent *cEvent = [[RCTComponentEvent alloc] initWithName:@"topChange"
+                                                             viewTag:sender.reactTag
+                                                                body:event];
+    [self.bridge.eventDispatcher sendEvent:cEvent];
 }
 
 - (void)animationDidStopForCheckBox:(BEMCheckBox *)sender {
@@ -55,7 +60,12 @@ RCT_EXPORT_MODULE();
         @"value": @(sender.on),
         @"name": @"animation",
     };
-    [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+//    [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+
+    RCTComponentEvent *cEvent = [[RCTComponentEvent alloc] initWithName:@"topChange"
+                                                             viewTag:sender.reactTag
+                                                                body:event];
+    [self.bridge.eventDispatcher sendEvent:cEvent];
 }
 
 RCT_CUSTOM_VIEW_PROPERTY(value, BOOL, BEMCheckBox) {
